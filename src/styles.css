@@ -1,0 +1,225 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0f1d;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: left;
+    color: #00ff99;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+table {
+    width: 98%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #1c2331;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    border: 1px solid #2e3b55;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #00ff99;
+    color: #0a0f1d;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #2e3b55;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Agreements*/
+tr:hover {
+    background-color: lightgrey;
+    transition: background-color 0.1s ease;
+    color: black;
+    cursor: pointer;
+}
+
+.edit-btn {
+    color: white;
+}
+
+.delete-btn {
+    color: #ff4d4d;
+}
+
+.deleteAgreement {
+    background-color: #0a0f1d;
+    color: red;
+}
+
+.editAgreement {
+    background-color: #0a0f1d;
+    margin-left: 10px;
+    color: white;
+}
+
+.td-icons {
+    text-align: center;
+}
+
+.buttonAction {
+    background-color: #00ff99;
+    border-collapse: collapse;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.actionButtonsDiv {
+    float: right;
+    padding-right: 25px;
+}
+
+.deleteButton {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.resultMessage {
+    text-align: center;
+    color: #00ff99;
+    margin-top: 25px;
+    font-size: large;
+}
+/* Modales */
+.addAgreementContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.addAgreementContent {
+    background: #1c2331;
+    border-radius: 12px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+.addTitle {
+    color: #00ff99
+}
+
+.addAgreementContent input,
+.addAgreementContent select {
+    width: 40%;
+    padding: 6px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f8f8f8;
+    margin-left: 10px;
+}
+
+.addAgreementContent input:focus,
+.addAgreementContent select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.divPropierties {
+    text-align: center;
+    align-items: center;
+}
+.addAgreementContent label {
+    display: block;
+    float: left;
+    text-align: left;
+    width: 150px;
+    margin-top: 20px;
+}
+.addAgreementContent select {
+    width: 43%;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-button {
+    flex: 1;
+    padding: 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modal-button.primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.modal-button.secondary {
+    background: #ccc;
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
