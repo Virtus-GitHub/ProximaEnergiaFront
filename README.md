@@ -1,3 +1,37 @@
+# Aplicación Próxima Energía
+
+Esta aplicación trata de una página desde la que pueden gestionarse los acuerdos comerciales.
+Desde ella se puede Añadir un acuerdo comercial, borrar uno o varios acuerdos comerciales,
+editar un acuerdo comercial y asociar las diferentes tarifas comerciales a un acuerdo.
+
+## Como probar la aplicación
+
+Es neceario en un princpio ejecutar el comando yarn install para que se instalen los paquetes de node_modules
+necesarios para poder ejecutarla.
+Es necesario también descargar el proyecto ProximaEnergiaBack del repositorio y arrancar la api (configurando el 
+acceso a la base de datos).
+
+Para poder probar será necesario abrir el proyecto en Visual Studio Code y ejecutar en la terminal el comando yarn dev.
+Una vez hecho esto en la consola nos aparecerá una direccion localhost que habrá que meter en el navegador para ver 
+la pantalla inicial de la aplicación.
+
+De esta forma se podrá depurar o ver por donde pasa el código.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
