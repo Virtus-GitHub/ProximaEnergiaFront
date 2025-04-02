@@ -58,6 +58,28 @@ tr:nth-child(even) {
     cursor: pointer;
     font-size: 18px;
 }
+/* Pagination */
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    background-color: #00ff99;
+    color: #0a0f1d;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
 /* Agreements*/
 tr:hover {
@@ -81,9 +103,10 @@ tr:hover {
 }
 
 .editAgreement {
-    background-color: #0a0f1d;
+    background-color: #00ff99;
     margin-left: 10px;
-    color: white;
+    color: #2e3b55;
+    border-radius: 8px;
 }
 
 .td-icons {
@@ -111,7 +134,7 @@ tr:hover {
     text-align: center;
     color: #00ff99;
     margin-top: 25px;
-    font-size: large;
+    font-size: 50px;
 }
 /* Modales */
 .addAgreementContainer {
@@ -168,6 +191,7 @@ tr:hover {
     text-align: left;
     width: 150px;
     margin-top: 20px;
+    color: white;
 }
 .addAgreementContent select {
     width: 43%;
@@ -198,6 +222,102 @@ tr:hover {
     color: black;
 }
 
+.ratesContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.ratesContent {
+    background: #1c2331;
+    border-radius: 12px;
+    padding: 20px;
+    width: 50%;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.ratesContent input,
+.ratesContent select {
+    width: 40%;
+    padding: 6px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f8f8f8;
+    margin-left: 10px;
+}
+
+.ratesContent input:focus,
+.ratesContent select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.ratesContent label {
+    display: block;
+    text-align: left;
+    width: 150px;
+    margin-top: 20px;
+    color: white;
+}
+
+.table-container {
+    flex-grow: 1;
+    max-height: 300px;
+    overflow-y: auto; 
+    margin-top: 15px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container thead {
+    position: sticky;
+    top: 0;
+    background-color: #1c2331;
+    color: white;
+    z-index: 10;
+}
+
+.table-container table th, 
+.table-container table td {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #1c2331;
+}
+
+.ratesButtons{
+    width: 40%;
+    margin: auto 30%;
+}
+
 @media screen and (max-width: 768px) {
     table {
         width: 100%;
@@ -208,6 +328,14 @@ tr:hover {
         padding: 8px;
         font-size: 14px;
     }
+}
+
+.fl{
+    float: left;
+}
+
+.ta-center{
+    text-align: center;
 }
 
 @media screen and (max-width: 480px) {
