@@ -7,7 +7,7 @@ import { MessageModal } from '../GeneralModals/MessageModal';
 import { AddAgreementRates } from '../consumptionrates/AddAgreementRates';
 
 const Agreements = () => {
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
 
     const { data, hasError, error, refresh } = useGetFetch('https://localhost:44395/api/AgreementMediator/GetAgreements');
 
@@ -52,7 +52,7 @@ const Agreements = () => {
         return <div>Cargando...</div>;
 
     if (!agreements || agreements.length === 0)
-        return <p>No hay acuerdos comerciales disponibles.</p>
+        return <p>No hay acuerdos comerciales disponibles. Por favor espere...</p>
 
     const update = (needUpdate = false) => {
         if (needUpdate)
@@ -65,27 +65,25 @@ const Agreements = () => {
     };
 
     const agreementRatesAdded = (added) => {
-        setOpenModal(false);
-
-        if(added)
+        if (added)
             setMessage('Las tarifas se han asociado correctamente');
         else
             setMessage('Las tarifas no se han podido asociar');
 
-        setShowMessage(true);
+        setOpenModal(true);
         handleSelectedAgreement(selectedAgreements[0], false);
+    };
 
-        setTimeout(() => {
-            setShowMessage(false);
-        }, 2000);
+    const onError = (error) => {
+        if (error) {
+            setMessage('Se ha producido un error inesperado, por favor contacte con el administrador.');
+            setOpenModal(true);
+        };
     };
 
     if (hasError) {
-        return (<MessageModal
-            message={error.message}
-            isOpen={openModal}
-            onClose={closeModal}
-        />);
+        setMessage(error.message);
+        setOpenModal(true);
     };
 
     return (
@@ -156,7 +154,8 @@ const Agreements = () => {
             </div>
             <div className='row actionButtonsDiv'>
                 <AddAgreement
-                    update={update} />
+                    update={update}
+                    onError={onError} />
                 <AddAgreementRates
                     agreement={selectedAgreements}
                     update={agreementRatesAdded} />
@@ -166,8 +165,13 @@ const Agreements = () => {
                 />
             </div>
             {
-                showMessage && <div className='resultMessage'><p style={{color: 'green'}}>{message}</p></div>
+                showMessage && <div className='resultMessage'><p style={{ color: 'green' }}>{message}</p></div>
             }
+            <MessageModal
+                message={message}
+                isOpen={openModal}
+                onClose={closeModal}
+            />
         </>
     );
 };

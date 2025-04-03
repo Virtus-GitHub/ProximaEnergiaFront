@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { MessageModal } from '../GeneralModals/MessageModal';
 
-export const SaveAgreement = ({formData, onClose}) => {
+export const SaveAgreement = ({formData, onClose, onError}) => {
 
     const [message, setMessage] = useState('');
 
@@ -33,14 +33,25 @@ export const SaveAgreement = ({formData, onClose}) => {
                 onAdd(false);
             });
 
-        const resp = await response.json();
+            if (response.status != 200){
+                const error = await response.text();
+                console.log(error);
 
-        onClose(true);
+                onAdd(false);
+                onClose(true);
+                onError(true);
+            }
+            else{
+                const resp = await response.json();
 
-        if (resp?.length !== 0)
-            onAdd(true);
-        else
-            onAdd(false);
+                onClose(true);
+                onError(false);
+        
+                if (resp?.length !== 0)
+                    onAdd(true);
+                else
+                    onAdd(false);
+            }
     };
 
     return (

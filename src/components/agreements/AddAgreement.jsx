@@ -3,7 +3,7 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import AddAgreementModal from './Modals/AddAgreementModal';
 
-export const AddAgreement = ({ update }) => {
+export const AddAgreement = ({ update, onError }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,6 +31,7 @@ export const AddAgreement = ({ update }) => {
             <AddAgreementModal
                 isOpen={isModalOpen}
                 onClose={onClose}
+                onError={onError}
             />
         </>
     )

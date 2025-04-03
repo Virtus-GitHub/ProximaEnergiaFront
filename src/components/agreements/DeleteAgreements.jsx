@@ -35,16 +35,26 @@ export const DeleteAgreements = ({ selectedAgreements, onDelete }) => {
             })
             .catch(err => {
                 itemsDeleted(false);
+                console.error(err.message);
             });
 
-        const resp = await response.json();
+            if (response.status != 200){
+                const error = await response.text();
+                console.log(error);
 
-        onDelete(true);
+                setMessage('Se ha producido un error inesperado, por favor contacte con al administrador.');
+                handleOpenModal();
+            }
+            else{
+                const resp = await response.json();
 
-        if (resp.length === 0)
-            itemsDeleted(true);
-        else
-            itemsDeleted(false);
+                onDelete(true);
+        
+                if (resp.length === 0)
+                    itemsDeleted(true);
+                else
+                    itemsDeleted(false);
+            }
     };
 
     return (

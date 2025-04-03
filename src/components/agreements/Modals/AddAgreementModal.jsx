@@ -3,7 +3,7 @@ import { SaveAgreement } from '../SaveAgreement';
 import { MessageModal } from '../../GeneralModals/MessageModal';
 import { useGetFetch } from '../../../hooks/useGetFetch';
 
-export const AddAgreementModal = ({ isOpen, onClose }) => {
+export const AddAgreementModal = ({ isOpen, onClose, onError }) => {
     if (!isOpen) return null;
 
     const [openModal, setOpenModal] = useState(true);
@@ -121,6 +121,7 @@ export const AddAgreementModal = ({ isOpen, onClose }) => {
                     <SaveAgreement
                         formData={formData}
                         onClose={onClose}
+                        onError={onError}
                     />
                 </div>
             </div>

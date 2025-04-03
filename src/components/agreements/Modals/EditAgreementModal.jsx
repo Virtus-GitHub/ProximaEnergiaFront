@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { MessageModal } from '../../GeneralModals/MessageModal';
 import { useGetFetch } from '../../../hooks/useGetFetch';
 
-export const EditAgreementModal = ({ agreement, isOpen, onEdited }) => {
+export const EditAgreementModal = ({ agreement, isOpen, onEdited, onError }) => {
     if (!isOpen) return null;
     const [openModal, setOpenModal] = useState(true);
 
@@ -55,12 +55,21 @@ export const EditAgreementModal = ({ agreement, isOpen, onEdited }) => {
                 onEdited(false);
             });
 
-        const resp = await response.json();
+            if (response.status != 200){
+                const error = await response.text();
+                console.log(error);
 
-        if(resp?.length !== 0)
-            onEdited(true);
-        else
-            onEdited(false);
+                onEdited(false);
+                onError(true);
+            }
+            else{
+                const resp = await response.json();
+        
+                if(resp?.length !== 0)
+                    onEdited(true);
+                else
+                    onEdited(false);
+            }
     };
 
     const handleChange = (e) => {
