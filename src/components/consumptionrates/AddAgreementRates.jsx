@@ -3,16 +3,19 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { ConsumptionRatesModal } from './ConsumptionRatesModal';
 
-export const AddAgreementRates = ({agreement, update}) => {
+export const AddAgreementRates = ({ agreement, update }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => setIsModalOpen(true);
 
     const handleCloseModal = () => setIsModalOpen(false);
 
-    const onClose = () => {
+    const onClose = (added) => {
         handleCloseModal();
-        update(true);
+        if (added)
+            update(true);
+        else
+            update(false);
     };
 
     return (
@@ -28,7 +31,7 @@ export const AddAgreementRates = ({agreement, update}) => {
             <Tooltip anchorSelect="#add" place="top">
                 Selecciona un acuerdo para asociar tarifas
             </Tooltip>
-            <ConsumptionRatesModal 
+            <ConsumptionRatesModal
                 agreement={agreement[0]}
                 isOpen={isModalOpen}
                 onClose={onClose}
