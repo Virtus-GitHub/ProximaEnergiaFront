@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { MessageModal } from '../../GeneralModals/MessageModal';
 import { useGetFetch } from '../../../hooks/useGetFetch';
+import { AuthContext } from '../../../context/AuthContext';
 
 export const EditAgreementModal = ({ agreement, isOpen, onEdited, onError }) => {
     if (!isOpen) return null;
+
+    const { token } = useContext(AuthContext);
+
     const [openModal, setOpenModal] = useState(true);
 
     const { data: agents, hasError, error, refresh } = useGetFetch('https://localhost:44395/api/CommercialAgents/GetAgents');
@@ -49,6 +53,7 @@ export const EditAgreementModal = ({ agreement, isOpen, onEdited, onError }) => 
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(formData)
             }).catch(err => {

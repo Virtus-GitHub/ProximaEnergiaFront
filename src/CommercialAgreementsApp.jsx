@@ -5,13 +5,13 @@ import Agreements from './components/agreements/Agreements';
 const CommercialAgreementsApp = () => {
 
     return (
-        <div>
             <div>
-                <img src={logo} alt="logo" className="logo" />
+                <div>
+                    <img src={logo} alt="logo" className="logo" />
+                </div>
+                <h1>Acuerdos Comerciales</h1>
+                <Agreements />
             </div>
-            <h1>Acuerdos Comerciales</h1>
-            <Agreements />
-        </div>
     )
 };
 

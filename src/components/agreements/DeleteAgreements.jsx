@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { MessageModal } from '../GeneralModals/MessageModal';
+import { AuthContext } from '../../context/AuthContext';
 
 export const DeleteAgreements = ({ selectedAgreements, onDelete }) => {
+    const { token } = useContext(AuthContext);
 
     const [message, setMessage] = useState('');
 
@@ -30,6 +32,7 @@ export const DeleteAgreements = ({ selectedAgreements, onDelete }) => {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(selectedAgreements)
             })

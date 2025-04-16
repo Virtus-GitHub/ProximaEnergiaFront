@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { MessageModal } from '../GeneralModals/MessageModal';
+import { AuthContext } from '../../context/AuthContext';
 
 export const SaveAgreement = ({formData, onClose, onError}) => {
+    const { token } = useContext(AuthContext);
 
     const [message, setMessage] = useState('');
 
@@ -25,7 +27,8 @@ export const SaveAgreement = ({formData, onClose, onError}) => {
             {
                 method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': "application/json",
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(formData)
             }).catch(err => {
